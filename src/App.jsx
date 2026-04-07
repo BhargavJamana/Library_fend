@@ -19,7 +19,7 @@ export default function App() {
     <Routes>
       <Route path="/login" element={user ? <Navigate to="/" replace /> : <Login />} />
       <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
-        <Route index element={<Dashboard />} />
+        <Route path='/' element={<Dashboard />} />
         <Route path="books" element={<Books />} />
         <Route path="members" element={<Members />} />
         <Route path="borrowings" element={<Borrowings />} />
