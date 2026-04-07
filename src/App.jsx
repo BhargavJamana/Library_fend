@@ -16,16 +16,33 @@ const PrivateRoute = ({ children }) => {
 export default function App() {
   const { user } = useAuth();
   return (
+
     <Routes>
-      <Route path="/login" element={user ? <Navigate to="/" replace /> : <Login />} />
-      <Route element={<PrivateRoute><Layout /></PrivateRoute>}>
-        <Route path='/' element={<Dashboard />} />
+
+      <Route
+        path="/login"
+        element={user ? <Navigate to="/" replace /> : <Login />}
+      />
+
+      <Route
+        path="/"
+        element={<PrivateRoute><Layout /></PrivateRoute>}>
+
+        <Route index element={<Dashboard />} />
+
         <Route path="books" element={<Books />} />
+
         <Route path="members" element={<Members />} />
+
         <Route path="borrowings" element={<Borrowings />} />
+
         <Route path="categories" element={<Categories />} />
+
       </Route>
+
       <Route path="*" element={<Navigate to="/" replace />} />
+
     </Routes>
+
   );
 }
